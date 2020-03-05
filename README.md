@@ -9,16 +9,7 @@ for code examples.
 
 ## Setup
 
-You should clone this repository and and the copy and paste the starter code into your project repo folder on your local computer.
-
-Assuming your repo is empty, you can use the following commands:
-
-```shell
-    git clone https://github.com/nyu-devops/project-template.git
-    cp -R project-template/ <your_repo_folder>/
-```
-
-This will recursively copy the contents of the template to your repo folder.
+You should clone this repository and and the copy and paste the starter code into your project repo folder on your local computer. Be careful not to copy over your own README.md file so be selective in what you copy.
 
 ## Contents
 
