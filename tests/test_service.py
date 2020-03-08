@@ -17,7 +17,7 @@ from service.service import app, init_db
 #  T E S T   C A S E S
 ######################################################################
 class TestYourResourceServer(TestCase):
-    """ <your resource name> Server Tests """
+    """ REST API Server Tests """
 
     @classmethod
     def setUpClass(cls):
