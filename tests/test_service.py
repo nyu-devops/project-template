@@ -11,7 +11,7 @@ from unittest import TestCase
 from unittest.mock import MagicMock, patch
 from flask_api import status  # HTTP Status Codes
 from service.models import db
-from service.service import app, init_db
+from service.routes import app, init_db
 
 ######################################################################
 #  T E S T   C A S E S
