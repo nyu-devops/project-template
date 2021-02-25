@@ -1,5 +1,5 @@
 """
-Models for <your resource name>
+Models for YourResourceModel
 
 All of the models are stored in this module
 """
@@ -28,11 +28,11 @@ class YourResourceModel(db.Model):
     name = db.Column(db.String(63))
 
     def __repr__(self):
-        return "<<your resource name> %r id=[%s]>" % (self.name, self.id)
+        return "<YourResourceModel %r id=[%s]>" % (self.name, self.id)
 
     def create(self):
         """
-        Creates a <your resource name> to the database
+        Creates a YourResourceModel to the database
         """
         logger.info("Creating %s", self.name)
         self.id = None  # id must be none to generate next primary key
@@ -41,19 +41,19 @@ class YourResourceModel(db.Model):
 
     def save(self):
         """
-        Updates a <your resource name> to the database
+        Updates a YourResourceModel to the database
         """
         logger.info("Saving %s", self.name)
         db.session.commit()
 
     def delete(self):
-        """ Removes a <your resource name> from the data store """
+        """ Removes a YourResourceModel from the data store """
         logger.info("Deleting %s", self.name)
         db.session.delete(self)
         db.session.commit()
 
     def serialize(self):
-        """ Serializes a <your resource name> into a dictionary """
+        """ Serializes a YourResourceModel into a dictionary """
         return {
             "id": self.id,
             "name": self.name
@@ -61,7 +61,7 @@ class YourResourceModel(db.Model):
 
     def deserialize(self, data):
         """
-        Deserializes a <your resource name> from a dictionary
+        Deserializes a YourResourceModel from a dictionary
 
         Args:
             data (dict): A dictionary containing the resource data
@@ -69,10 +69,10 @@ class YourResourceModel(db.Model):
         try:
             self.name = data["name"]
         except KeyError as error:
-            raise DataValidationError("Invalid <your resource name>: missing " + error.args[0])
+            raise DataValidationError("Invalid YourResourceModel: missing " + error.args[0])
         except TypeError as error:
             raise DataValidationError(
-                "Invalid <your resource name>: body of request contained" "bad or no data"
+                "Invalid YourResourceModel: body of request contained" "bad or no data"
             )
         return self
 
@@ -88,28 +88,28 @@ class YourResourceModel(db.Model):
 
     @classmethod
     def all(cls):
-        """ Returns all of the <your resource name>s in the database """
-        logger.info("Processing all <your resource name>s")
+        """ Returns all of the YourResourceModels in the database """
+        logger.info("Processing all YourResourceModels")
         return cls.query.all()
 
     @classmethod
     def find(cls, by_id):
-        """ Finds a <your resource name> by it's ID """
+        """ Finds a YourResourceModel by it's ID """
         logger.info("Processing lookup for id %s ...", by_id)
         return cls.query.get(by_id)
 
     @classmethod
     def find_or_404(cls, by_id):
-        """ Find a <your resource name> by it's id """
+        """ Find a YourResourceModel by it's id """
         logger.info("Processing lookup or 404 for id %s ...", by_id)
         return cls.query.get_or_404(by_id)
 
     @classmethod
     def find_by_name(cls, name):
-        """ Returns all <your resource name>s with the given name
+        """ Returns all YourResourceModels with the given name
 
         Args:
-            name (string): the name of the <your resource name>s you want to match
+            name (string): the name of the YourResourceModels you want to match
         """
         logger.info("Processing name query for %s ...", name)
         return cls.query.filter(cls.name == name)
