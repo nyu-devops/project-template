@@ -73,17 +73,13 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
-    apt-get install -y git python3 python3-pip python3-venv
+    apt-get install -y git tree wget vim python3-dev python3-pip python3-venv apt-transport-https libpq-dev
     apt-get -y autoremove
 
     # Create a Python3 Virtual Environment and Activate it in .profile
     sudo -H -u vagrant sh -c 'python3 -m venv ~/venv'
     sudo -H -u vagrant sh -c 'echo ". ~/venv/bin/activate" >> ~/.profile'
     sudo -H -u vagrant sh -c '. ~/venv/bin/activate && cd /vagrant && pip install -r requirements.txt'
-
-    # Install app dependencies
-    # cd /vagrant
-    # pip3 install -r requirements.txt
   SHELL
 
   ######################################################################
