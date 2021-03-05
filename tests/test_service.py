@@ -1,5 +1,5 @@
 """
-<your resource name> API Service Test Suite
+TestYourResourceModel API Service Test Suite
 
 Test cases can be run with the following:
   nosetests -v --with-spec --spec-color
@@ -33,14 +33,13 @@ class TestYourResourceServer(TestCase):
         """ This runs before each test """
         self.app = app.test_client()
 
-
     def tearDown(self):
         """ This runs after each test """
         pass
 
-######################################################################
-#  P L A C E   T E S T   C A S E S   H E R E 
-######################################################################
+    ######################################################################
+    #  P L A C E   T E S T   C A S E S   H E R E
+    ######################################################################
 
     def test_index(self):
         """ Test index call """

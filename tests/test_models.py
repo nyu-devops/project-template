@@ -1,5 +1,5 @@
 """
-Test cases for <your resource name> Model
+Test cases for YourResourceModel Model
 
 """
 import logging
@@ -11,7 +11,7 @@ from service.models import YourResourceModel, DataValidationError, db
 #  <your resource name>   M O D E L   T E S T   C A S E S
 ######################################################################
 class TestYourResourceModel(unittest.TestCase):
-    """ Test Cases for <your resource name> Model """
+    """ Test Cases for YourResourceModel Model """
 
     @classmethod
     def setUpClass(cls):
@@ -31,9 +31,9 @@ class TestYourResourceModel(unittest.TestCase):
         """ This runs after each test """
         pass
 
-######################################################################
-#  P L A C E   T E S T   C A S E S   H E R E 
-######################################################################
+    ######################################################################
+    #  T E S T   C A S E S
+    ######################################################################
 
     def test_XXXX(self):
         """ Test something """

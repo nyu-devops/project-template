@@ -11,8 +11,10 @@ logger = logging.getLogger("flask.app")
 # Create the SQLAlchemy object to be initialized later in init_db()
 db = SQLAlchemy()
 
+
 class DataValidationError(Exception):
     """ Used for an data validation errors when deserializing """
+
     pass
 
 
@@ -54,10 +56,7 @@ class YourResourceModel(db.Model):
 
     def serialize(self):
         """ Serializes a YourResourceModel into a dictionary """
-        return {
-            "id": self.id,
-            "name": self.name
-        }
+        return {"id": self.id, "name": self.name}
 
     def deserialize(self, data):
         """
@@ -69,10 +68,12 @@ class YourResourceModel(db.Model):
         try:
             self.name = data["name"]
         except KeyError as error:
-            raise DataValidationError("Invalid YourResourceModel: missing " + error.args[0])
+            raise DataValidationError(
+                "Invalid YourResourceModel: missing " + error.args[0]
+            )
         except TypeError as error:
             raise DataValidationError(
-                "Invalid YourResourceModel: body of request contained" "bad or no data"
+                "Invalid YourResourceModel: body of request contained bad or no data"
             )
         return self
 
@@ -106,7 +107,7 @@ class YourResourceModel(db.Model):
 
     @classmethod
     def find_by_name(cls, name):
-        """ Returns all YourResourceModels with the given name
+        """Returns all YourResourceModels with the given name
 
         Args:
             name (string): the name of the YourResourceModels you want to match
