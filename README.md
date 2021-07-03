@@ -9,7 +9,7 @@ for code examples.
 
 ## Setup
 
-You should clone this repository and and the copy and paste the starter code into your project repo folder on your local computer. Be careful not to copy over your own README.md file so be selective in what you copy.
+You should clone this repository and then copy and paste the starter code into your project repo folder on your local computer. Be careful not to copy over your own README.md file so be selective in what you copy.
 
 There are two hidden files that you will need to copy manually if you use the Finder to copy files from this folder into your repo folder. They are:
 
@@ -42,4 +42,4 @@ tests/              - test cases package
 Vagrantfile         - Sample Vagrant file that installs Python 3 and PostgreSQL
 ```
 
-This repository is part of the NYU class **CSCI-GA.2810-001: DevOps and Agile Methodologies** taught by John Rofrano, Adjunct Instructor, NYU Curant Institute, Graduate Division, Computer Science.
+This repository is part of the NYU class **CSCI-GA.2810-001: DevOps and Agile Methodologies** taught by John Rofrano, Adjunct Instructor, NYU Courant Institute, Graduate Division, Computer Science.
