@@ -7,18 +7,16 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
-    hostname: devops
-    ports:
-      - 5000:5000
+    hostname: nyu
+    # ports:
+    #   - 8000:8000
     volumes:
-      - ~/.ssh/:/home/vagrant/.ssh/
-      - ~/.bluemix/:/home/vagrant/.bluemix/
-      - ~/.kube/:/home/vagrant/.kube/
-      - ..:/vagrant
+      - ..:/app
     command: sleep infinity
     environment:
       FLASK_APP: service:app
-      DATABASE_URI: postgres://postgres:postgres@postgres:5432/postgres
+      FLASK_ENV: development
+      DATABASE_URI: postgresql://postgres:postgres@postgres:5432/postgres
     networks:
       - dev
     depends_on:
@@ -26,7 +24,6 @@ services:
 
   postgres:
     image: postgres:alpine
-    restart: always
     ports:
       - 5432:5432
     environment:
