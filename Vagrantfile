@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.56.10"
 
   # Mac users can comment this next line out but
   # Windows users need to change the permission of files and directories
@@ -41,13 +41,15 @@ Vagrant.configure(2) do |config|
   ############################################################
   config.vm.provider :docker do |docker, override|
     override.vm.box = nil
-    docker.image = "rofrano/vagrant-provider:ubuntu"
+    override.vm.hostname = "debian"
+    docker.image = "rofrano/vagrant-provider:debian"
     docker.remains_running = true
     docker.has_ssh = true
     docker.privileged = true
-    docker.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:ro"]
+    docker.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:rw"]
+    docker.create_args = ["--cgroupns=host"]
     # Uncomment to force arm64 for testing images on Intel
-    # docker.create_args = ["--platform=linux/arm64"]     
+    # docker.create_args = ["--cgroupns=host", "--platform=linux/arm64"]     
   end
 
   # Copy your .gitconfig file so that your git credentials are correct
