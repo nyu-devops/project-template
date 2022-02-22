@@ -8,6 +8,9 @@ Thumbs.db
 # Vagrant
 .vagrant
 
+# TDD
+unittests.xml
+
 # databases
 *.db
 db/*
