@@ -20,8 +20,7 @@
 		"njpwerner.autodocstring",
 		"redhat.vscode-yaml",
 		"streetsidesoftware.code-spell-checker",
-		"wholroyd.jinja",
-		"bbenoist.vagrant"
+		"wholroyd.jinja"
 	],
 	//"forwardPorts": [8000],
 	//"postCreateCommand": "sudo pip install -U pip wheel && sudo pip install -r requirements.txt"
