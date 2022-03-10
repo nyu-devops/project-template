@@ -20,7 +20,7 @@ class DataValidationError(Exception):
 
 class YourResourceModel(db.Model):
     """
-    Class that represents a <your resource model name>
+    Class that represents a YourResourceModel
     """
 
     app = None
@@ -41,7 +41,7 @@ class YourResourceModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def save(self):
+    def update(self):
         """
         Updates a YourResourceModel to the database
         """
@@ -98,12 +98,6 @@ class YourResourceModel(db.Model):
         """ Finds a YourResourceModel by it's ID """
         logger.info("Processing lookup for id %s ...", by_id)
         return cls.query.get(by_id)
-
-    @classmethod
-    def find_or_404(cls, by_id):
-        """ Find a YourResourceModel by it's id """
-        logger.info("Processing lookup or 404 for id %s ...", by_id)
-        return cls.query.get_or_404(by_id)
 
     @classmethod
     def find_by_name(cls, name):
