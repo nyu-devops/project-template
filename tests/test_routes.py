@@ -9,9 +9,10 @@ import os
 import logging
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
-from service import status  # HTTP Status Codes
+from service import app
 from service.models import db
-from service.routes import app, init_db
+from service.utils import status  # HTTP Status Codes
+
 
 ######################################################################
 #  T E S T   C A S E S
@@ -42,6 +43,6 @@ class TestYourResourceServer(TestCase):
     ######################################################################
 
     def test_index(self):
-        """ Test index call """
+        """ It should call the home page """
         resp = self.app.get("/")
         self.assertEqual(resp.status_code, status.HTTP_200_OK)

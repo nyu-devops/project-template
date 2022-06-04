@@ -2,9 +2,9 @@
 Test cases for YourResourceModel Model
 
 """
+import os
 import logging
 import unittest
-import os
 from service.models import YourResourceModel, DataValidationError, db
 
 ######################################################################
@@ -36,5 +36,5 @@ class TestYourResourceModel(unittest.TestCase):
     ######################################################################
 
     def test_XXXX(self):
-        """ Test something """
+        """ It should always be true """
         self.assertTrue(True)

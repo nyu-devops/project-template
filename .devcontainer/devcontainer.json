@@ -17,11 +17,12 @@
 		"donjayamanne.githistory",
 		"GitHub.vscode-pull-request-github",
 		"hbenl.vscode-test-explorer",
+		"LittleFoxTeam.vscode-python-test-adapter",
 		"njpwerner.autodocstring",
 		"redhat.vscode-yaml",
 		"streetsidesoftware.code-spell-checker",
-		"wholroyd.jinja"
+		"wholroyd.jinja",
+		"bbenoist.vagrant"
 	],
-	//"forwardPorts": [8000],
-	//"postCreateCommand": "sudo pip install -U pip wheel && sudo pip install -r requirements.txt"
+	"postCreateCommand": "sudo pip install -r requirements.txt"
 }

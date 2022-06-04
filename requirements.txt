@@ -1,23 +1,26 @@
-# Dependencies
-Flask==2.0.2
+# Werkzeug is famous for breaking Flask so pin down a known working version
+Werkzeug==2.1.1
+
+# Build dependencies
+Flask==2.1.1
 Flask-SQLAlchemy==2.5.1
 psycopg2==2.9.3
-python-dotenv==0.19.2
+python-dotenv==0.20.0
 
-# Runtime
+# Runtime dependencies
 gunicorn==20.1.0
-honcho>=1.0.1
+honcho==1.1.0
 
 # Code quality
-pylint==2.9.3
+pylint==2.13.7
 flake8==3.7.9
 
-# Testing
-factory-boy==2.12.0
+# Testing dependencies
 nose==1.3.7
-pinocchio==0.4.2
-httpie==3.1.0
+pinocchio==0.4.3
+factory-boy==2.12.0
+coverage==6.3.2
+codecov==2.1.12
 
-# Code coverage
-coverage==4.5.4
-codecov==2.1.10
+# Utilities
+httpie==3.1.0
