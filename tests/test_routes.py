@@ -11,7 +11,7 @@ from unittest import TestCase
 from unittest.mock import MagicMock, patch
 from service import app
 from service.models import db
-from service.utils import status  # HTTP Status Codes
+from service.common import status  # HTTP Status Codes
 
 
 ######################################################################

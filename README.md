@@ -44,7 +44,7 @@ service/                   - service python package
 ├── __init__.py            - package initializer
 ├── models.py              - module with business models
 ├── routes.py              - module with service routes
-└── utils                  - utility package
+└── common                 - common code package
     ├── error_handlers.py  - HTTP error handling code
     ├── log_handlers.py    - logging setup code
     └── status.py          - HTTP status constants
