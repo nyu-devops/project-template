@@ -5,7 +5,7 @@ Describe what your service does here
 """
 
 from flask import Flask, jsonify, request, url_for, make_response, abort
-from .common import status  # HTTP Status Codes
+from service.common import status  # HTTP Status Codes
 from service.models import YourResourceModel
 
 # Import Flask application
@@ -25,11 +25,7 @@ def index():
 
 
 ######################################################################
-#  U T I L I T Y   F U N C T I O N S
+#  R E S T   A P I   E N D P O I N T S
 ######################################################################
 
-
-def init_db():
-    """ Initializes the SQLAlchemy app """
-    global app
-    YourResourceModel.init_db(app)
+# Place your REST API code here ...

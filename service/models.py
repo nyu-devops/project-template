@@ -12,10 +12,14 @@ logger = logging.getLogger("flask.app")
 db = SQLAlchemy()
 
 
+# Function to initialize the database
+def init_db(app):
+    """ Initializes the SQLAlchemy app """
+    YourResourceModel.init_db(app)
+
+
 class DataValidationError(Exception):
     """ Used for an data validation errors when deserializing """
-
-    pass
 
 
 class YourResourceModel(db.Model):
@@ -30,14 +34,14 @@ class YourResourceModel(db.Model):
     name = db.Column(db.String(63))
 
     def __repr__(self):
-        return "<YourResourceModel %r id=[%s]>" % (self.name, self.id)
+        return f"<YourResourceModel {self.name} id=[{self.id}]>"
 
     def create(self):
         """
         Creates a YourResourceModel to the database
         """
         logger.info("Creating %s", self.name)
-        self.id = None  # id must be none to generate next primary key
+        self.id = None  # pylint: disable=invalid-name
         db.session.add(self)
         db.session.commit()
 
@@ -70,12 +74,12 @@ class YourResourceModel(db.Model):
         except KeyError as error:
             raise DataValidationError(
                 "Invalid YourResourceModel: missing " + error.args[0]
-            )
+            ) from error
         except TypeError as error:
             raise DataValidationError(
                 "Invalid YourResourceModel: body of request contained bad or no data - "
                 "Error message: " + error
-            )
+            ) from error
         return self
 
     @classmethod
