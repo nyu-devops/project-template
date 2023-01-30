@@ -3,7 +3,8 @@
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/app",
-	"remoteUser": "devops",
+	"remoteUser": "vscode",
+    "runArgs": ["-h","nyu", "--name", "project"],
 	"extensions": [
 		"VisualStudioExptTeam.vscodeintellicode",
 		"ms-python.python",
@@ -23,7 +24,10 @@
 		"redhat.vscode-yaml",
 		"streetsidesoftware.code-spell-checker",
 		"wholroyd.jinja",
-		"bbenoist.vagrant"
+		"bbenoist.vagrant",
+		"rangav.vscode-thunder-client",
+		"ms-azuretools.vscode-docker",
+		"ms-kubernetes-tools.vscode-kubernetes-tools"
 	],
 	"postCreateCommand": "sudo pip install -r requirements.txt"
 }
