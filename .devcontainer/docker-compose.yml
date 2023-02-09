@@ -6,7 +6,7 @@ services:
   app:
     build:
       context: ..
-      dockerfile: .devcontainer/Dockerfile
+      dockerfile: .devcontainer/Dockerfile    
     hostname: nyu
     container_name: project
     volumes:
@@ -14,6 +14,7 @@ services:
     command: sleep infinity
     environment:
       FLASK_APP: service:app
+      FLASK_DEBUG: True
       PORT: 8000
       DATABASE_URI: postgresql://postgres:postgres@postgres:5432/postgres
     networks:
@@ -23,6 +24,7 @@ services:
 
   postgres:
     image: postgres:alpine
+    # Uncomment ports to access database from your computer (optional)
     # ports:
     #   - 5432:5432
     environment:
