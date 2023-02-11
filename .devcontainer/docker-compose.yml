@@ -14,7 +14,7 @@ services:
     command: sleep infinity
     environment:
       FLASK_APP: service:app
-      FLASK_DEBUG: True
+      FLASK_DEBUG: "True"
       PORT: 8000
       DATABASE_URI: postgresql://postgres:postgres@postgres:5432/postgres
     networks:
