@@ -31,7 +31,7 @@
 				"ms-kubernetes-tools.vscode-kubernetes-tools",
 				"streetsidesoftware.code-spell-checker"
 			]	
-		},
+		}
 	},
 	"postCreateCommand": "sudo pip install -r requirements.txt",
 

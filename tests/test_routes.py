@@ -30,7 +30,7 @@ class TestYourResourceServer(TestCase):
 
     def setUp(self):
         """ This runs before each test """
-        self.app = app.test_client()
+        self.client = app.test_client()
 
     def tearDown(self):
         """ This runs after each test """
@@ -41,5 +41,5 @@ class TestYourResourceServer(TestCase):
 
     def test_index(self):
         """ It should call the home page """
-        resp = self.app.get("/")
+        resp = self.client.get("/")
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
