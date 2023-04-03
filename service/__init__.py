@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.config.from_object(config)
 
 # Dependencies require we import the routes AFTER the Flask app is created
-# pylint: disable=wrong-import-position, wrong-import-order
+# pylint: disable=wrong-import-position, wrong-import-order, cyclic-import
 from service import routes, models  # noqa: E402, E261
 # pylint: disable=wrong-import-position
 from service.common import error_handlers, cli_commands  # noqa: F401, E402
