@@ -1,3 +1,4 @@
+// cSpell: disable
 {
 	"name": "NYU Project",
 	"dockerComposeFile": "docker-compose.yml",
@@ -33,7 +34,7 @@
 			]	
 		}
 	},
-	"postCreateCommand": "sudo pip install -r requirements.txt",
+	//"postCreateCommand": "",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": 8080,
