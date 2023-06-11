@@ -1,25 +1,24 @@
-# Pin dependancies that might cause breakage
+# Pinned dependencies that cause breakage
 Werkzeug==2.3.3
 SQLAlchemy==2.0.0
 
-# Build dependencies
+# Runtime dependencies
 Flask==2.3.2
 Flask-SQLAlchemy==3.0.2
 psycopg2==2.9.5
 python-dotenv==0.21.1
 
-# Runtime dependencies
+# Runtime tools
 gunicorn==20.1.0
 honcho==1.1.0
 
 # Code quality
-pylint==2.15.10
+pylint==2.16.2
 flake8==6.0.0
 black==23.1.0
 
 # Testing dependencies
-nose==1.3.7
-pinocchio==0.4.3
+green==3.4.3
 factory-boy==3.2.1
 coverage==7.1.0
 
