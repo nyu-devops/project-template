@@ -11,6 +11,7 @@ from service.models import YourResourceModel, DataValidationError, db
 ######################################################################
 #  YourResourceModel   M O D E L   T E S T   C A S E S
 ######################################################################
+# pylint: disable=too-many-public-methods
 class TestYourResourceModel(unittest.TestCase):
     """ Test Cases for YourResourceModel Model """
 

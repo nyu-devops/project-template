@@ -17,6 +17,7 @@ from service.common import status  # HTTP Status Codes
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
+# pylint: disable=too-many-public-methods
 class TestYourResourceServer(TestCase):
     """ REST API Server Tests """
 
