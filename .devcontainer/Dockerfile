@@ -1,11 +1,5 @@
 # Image for a NYU Lab development environment
-FROM rofrano/nyu-devops-base:su23
-
-## Uncomment below lines to add Selenium for BDD
-# RUN sudo apt-get update && \
-#     sudo apt-get install -y chromium-driver python3-selenium && \
-#     sudo apt-get autoremove -y && \
-#     sudo apt-get clean -y
+FROM rofrano/nyu-devops-base:fa23
 
 # Set up the Python development environment
 WORKDIR /app
