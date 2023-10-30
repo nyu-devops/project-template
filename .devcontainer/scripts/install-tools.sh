@@ -17,7 +17,7 @@ curl -s "https://raw.githubusercontent.com/rancher/k3d/main/install.sh" | sudo b
 echo "Creating kc and kns alias for kubectl..."
 echo "alias kc='/usr/local/bin/kubectl'" >> $HOME/.bash_aliases
 echo "alias kns='kubectl config set-context --current --namespace'" >> $HOME/.bash_aliases
-sudo sh -c 'echo "127.0.0.1 cluster-registry" >> /etc/hosts'
+sudo echo "127.0.0.1 cluster-registry" >> /etc/hosts
 
 echo "**********************************************************************"
 echo "Install Kustomize CLI..."
