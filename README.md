@@ -37,7 +37,7 @@ The project contains the following:
 .gitattributes      - File to gix Windows CRLF issues
 .devcontainers/     - Folder with support for VSCode Remote Containers
 dot-env-example     - copy to .env to use environment variables
-requirements.txt    - list if Python libraries required by your code
+pyproject.toml      - Poetry list of Python libraries required by your code
 config.py           - configuration parameters
 
 service/                   - service python package
@@ -57,7 +57,7 @@ tests/              - test cases package
 
 ## License
 
-Copyright (c) John Rofrano. All rights reserved.
+Copyright (c) 2016, 2023 [John Rofrano](https://www.linkedin.com/in/JohnRofrano/). All rights reserved.
 
 Licensed under the Apache License. See [LICENSE](LICENSE)
 
