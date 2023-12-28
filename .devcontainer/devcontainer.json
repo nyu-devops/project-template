@@ -11,24 +11,35 @@
 				"[python]": {
 					"editor.defaultFormatter": "ms-python.black-formatter",
 					"editor.formatOnSave": true
-				  },
-				  "markdown-preview-github-styles.colorTheme": "light",
-				  "files.exclude": {
-					  "**/.git": true,
-					  "**/.DS_Store": true,
-					  "**/*.pyc": true,
-					  "**/__pycache__": true,
-					  "**/.pytest_cache": true
-				  }  
+				},
+				"markdown-preview-github-styles.colorTheme": "light",
+				"makefile.extensionOutputFolder": "/tmp",
+				"python.testing.pytestEnabled": false,
+				"python.testing.unittestEnabled": true,
+				"python.testing.unittestArgs": [
+					"-v",
+					"-s",
+					"./tests",
+					"-p",
+					"test*.py"
+				],
+				"files.exclude": {
+					"**/.git": true,
+					"**/.DS_Store": true,
+					"**/*.pyc": true,
+					"**/__pycache__": true,
+					"**/.pytest_cache": true
+				}
 			},
 			"extensions": [
-				"VisualStudioExptTeam.vscodeintellicode",
 				"ms-python.python",
 				"ms-python.pylint",
 				"ms-python.vscode-pylance",
+				"VisualStudioExptTeam.vscodeintellicode",
 				"ms-python.black-formatter",
-				// "alexkrechik.cucumberautocomplete",
+				"alexkrechik.cucumberautocomplete",
 				"cstrap.flask-snippets",
+				"ms-vscode.makefile-tools",
 				"yzhang.markdown-all-in-one",
 				"bierner.github-markdown-preview",
 				"hnw.vscode-auto-open-markdown-preview",
@@ -44,13 +55,16 @@
 				"Zignd.html-css-class-completion",
 				"bbenoist.vagrant",
 				"rangav.vscode-thunder-client",
+				"redhat.fabric8-analytics",
 				"ms-azuretools.vscode-docker",
 				"ms-kubernetes-tools.vscode-kubernetes-tools",
-				"streetsidesoftware.code-spell-checker"
+				"streetsidesoftware.code-spell-checker",
+				"github.vscode-github-actions",
+				"bbenoist.vagrant"
 			]	
 		}
 	},
-	//"postCreateCommand": "",
+	"postCreateCommand": "bash /app/.devcontainer/scripts/post-install.sh",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": 8080,

@@ -8,7 +8,7 @@ services:
       context: ..
       dockerfile: .devcontainer/Dockerfile    
     hostname: nyu
-    container_name: project
+    container_name: nyu-project
     volumes:
       - ..:/app
     command: sleep infinity
@@ -16,19 +16,19 @@ services:
       FLASK_APP: service:app
       FLASK_DEBUG: "True"
       PORT: 8000
-      DATABASE_URI: postgresql://postgres:postgres@postgres:5432/postgres
+      DATABASE_URI: postgresql+psycopg://postgres:pgs3cr3t@postgres:5432/postgres
     networks:
       - dev
     depends_on:
       - postgres
 
   postgres:
-    image: postgres:alpine
+    image: postgres:15-alpine
     # Uncomment ports to access database from your computer (optional)
     # ports:
     #   - 5432:5432
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: pgs3cr3t
     volumes:
       - postgres:/var/lib/postgresql/data
     networks:
