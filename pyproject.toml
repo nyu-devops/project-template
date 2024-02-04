@@ -8,22 +8,21 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-Flask = "^3.0.0"
-Flask-SQLAlchemy = "3.0.2"
-psycopg = {extras = ["binary"], version = "^3.1.16"}
+Flask = "^3.0.2"
+Flask-SQLAlchemy = "^3.1.1"
+psycopg = {extras = ["binary"], version = "^3.1.17"}
 retry = "^0.9.2"
-python-dotenv = "^1.0.0"
+python-dotenv = "^1.0.1"
 gunicorn = "^21.2.0"
-honcho = "^1.1.0"
 
 [tool.poetry.group.dev.dependencies]
+honcho = "^1.1.0"
 pylint = "^3.0.2"
 flake8 = "^6.1.0"
 black = "^23.10.1"
 pytest = "^7.4.3"
 pytest-pspec = "^0.0.4"
 pytest-cov = "^4.1.0"
-green = "^3.4.3"
 factory-boy = "^3.3.0"
 coverage = "^7.3.2"
 httpie = "^3.2.2"

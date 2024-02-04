@@ -26,7 +26,7 @@
 					"**/__pycache__": true,
 					"**/.pytest_cache": true
 				}
-			},			
+			},
 			"extensions": [
 				"ms-python.python",
 				"ms-python.pylint",
