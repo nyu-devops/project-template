@@ -12,12 +12,6 @@ logger = logging.getLogger("flask.app")
 db = SQLAlchemy()
 
 
-# Function to initialize the database
-def init_db(app):
-    """ Initializes the SQLAlchemy app """
-    YourResourceModel.init_db(app)
-
-
 class DataValidationError(Exception):
     """ Used for an data validation errors when deserializing """
 
@@ -27,11 +21,13 @@ class YourResourceModel(db.Model):
     Class that represents a YourResourceModel
     """
 
-    app = None
-
+    ##################################################
     # Table Schema
+    ##################################################
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(63))
+
+    # Todo: Place the rest of your schema here...
 
     def __repr__(self):
         return f"<YourResourceModel {self.name} id=[{self.id}]>"
@@ -42,21 +38,36 @@ class YourResourceModel(db.Model):
         """
         logger.info("Creating %s", self.name)
         self.id = None  # pylint: disable=invalid-name
-        db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            logger.error("Error creating record: %s", self)
+            raise DataValidationError(e) from e
 
     def update(self):
         """
         Updates a YourResourceModel to the database
         """
         logger.info("Saving %s", self.name)
-        db.session.commit()
+        try:
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            logger.error("Error updating record: %s", self)
+            raise DataValidationError(e) from e
 
     def delete(self):
         """ Removes a YourResourceModel from the data store """
         logger.info("Deleting %s", self.name)
-        db.session.delete(self)
-        db.session.commit()
+        try:
+            db.session.delete(self)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            logger.error("Error deleting record: %s", self)
+            raise DataValidationError(e) from e
 
     def serialize(self):
         """ Serializes a YourResourceModel into a dictionary """
@@ -71,26 +82,21 @@ class YourResourceModel(db.Model):
         """
         try:
             self.name = data["name"]
+        except AttributeError as error:
+            raise DataValidationError("Invalid attribute: " + error.args[0]) from error
         except KeyError as error:
             raise DataValidationError(
                 "Invalid YourResourceModel: missing " + error.args[0]
             ) from error
         except TypeError as error:
             raise DataValidationError(
-                "Invalid YourResourceModel: body of request contained bad or no data - "
-                "Error message: " + error
+                "Invalid YourResourceModel: body of request contained bad or no data " + str(error)
             ) from error
         return self
 
-    @classmethod
-    def init_db(cls, app):
-        """ Initializes the database session """
-        logger.info("Initializing database")
-        cls.app = app
-        # This is where we initialize SQLAlchemy from the Flask app
-        db.init_app(app)
-        app.app_context().push()
-        db.create_all()  # make our sqlalchemy tables
+    ##################################################
+    # CLASS METHODS
+    ##################################################
 
     @classmethod
     def all(cls):
