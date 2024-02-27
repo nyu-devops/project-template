@@ -52,6 +52,7 @@ service/                   - service python package
 
 tests/                     - test cases package
 ├── __init__.py            - package initializer
+├── factories.py           - Factory for testing with fake objects
 ├── test_cli_commands.py   - test suite for the CLI
 ├── test_models.py         - test suite for business models
 └── test_routes.py         - test suite for service routes
