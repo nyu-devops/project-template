@@ -1,11 +1,13 @@
 """
 Test cases for Pet Model
 """
+
 import os
 import logging
 from unittest import TestCase
 from wsgi import app
 from service.models import YourResourceModel, DataValidationError, db
+from .factories import YourResourceModelFactory
 
 DATABASE_URI = os.getenv(
     "DATABASE_URI", "postgresql+psycopg://postgres:postgres@localhost:5432/testdb"
@@ -17,7 +19,7 @@ DATABASE_URI = os.getenv(
 ######################################################################
 # pylint: disable=too-many-public-methods
 class TestYourResourceModel(TestCase):
-    """ Test Cases for YourResourceModel Model """
+    """Test Cases for YourResourceModel Model"""
 
     @classmethod
     def setUpClass(cls):
@@ -30,7 +32,7 @@ class TestYourResourceModel(TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        """ This runs once after the entire test suite """
+        """This runs once after the entire test suite"""
         db.session.close()
 
     def setUp(self):
@@ -47,8 +49,14 @@ class TestYourResourceModel(TestCase):
     ######################################################################
 
     def test_example_replace_this(self):
-        """ It should always be true """
+        """It should create a YourResourceModel"""
         # Todo: Remove this test case example
-        self.assertTrue(True)
+        resource = YourResourceModelFactory()
+        resource.create()
+        self.assertIsNotNone(resource.id)
+        found = YourResourceModel.all()
+        self.assertEqual(len(found), 1)
+        data = YourResourceModel.find(resource.id)
+        self.assertEqual(data.name, resource.name)
 
     # Todo: Add your test cases here...

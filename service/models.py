@@ -3,6 +3,7 @@ Models for YourResourceModel
 
 All of the models are stored in this module
 """
+
 import logging
 from flask_sqlalchemy import SQLAlchemy
 
@@ -13,7 +14,7 @@ db = SQLAlchemy()
 
 
 class DataValidationError(Exception):
-    """ Used for an data validation errors when deserializing """
+    """Used for an data validation errors when deserializing"""
 
 
 class YourResourceModel(db.Model):
@@ -59,7 +60,7 @@ class YourResourceModel(db.Model):
             raise DataValidationError(e) from e
 
     def delete(self):
-        """ Removes a YourResourceModel from the data store """
+        """Removes a YourResourceModel from the data store"""
         logger.info("Deleting %s", self.name)
         try:
             db.session.delete(self)
@@ -70,7 +71,7 @@ class YourResourceModel(db.Model):
             raise DataValidationError(e) from e
 
     def serialize(self):
-        """ Serializes a YourResourceModel into a dictionary """
+        """Serializes a YourResourceModel into a dictionary"""
         return {"id": self.id, "name": self.name}
 
     def deserialize(self, data):
@@ -90,7 +91,8 @@ class YourResourceModel(db.Model):
             ) from error
         except TypeError as error:
             raise DataValidationError(
-                "Invalid YourResourceModel: body of request contained bad or no data " + str(error)
+                "Invalid YourResourceModel: body of request contained bad or no data "
+                + str(error)
             ) from error
         return self
 
@@ -100,15 +102,15 @@ class YourResourceModel(db.Model):
 
     @classmethod
     def all(cls):
-        """ Returns all of the YourResourceModels in the database """
+        """Returns all of the YourResourceModels in the database"""
         logger.info("Processing all YourResourceModels")
         return cls.query.all()
 
     @classmethod
     def find(cls, by_id):
-        """ Finds a YourResourceModel by it's ID """
+        """Finds a YourResourceModel by it's ID"""
         logger.info("Processing lookup for id %s ...", by_id)
-        return cls.query.get(by_id)
+        return cls.query.session.get(cls, by_id)
 
     @classmethod
     def find_by_name(cls, name):
