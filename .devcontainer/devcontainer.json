@@ -8,6 +8,14 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
+				"cSpell.words": [
+					"sqlalchemy",
+					"psycopg",
+					"pytest",
+					"tekton",
+					"creds",
+					"virtualenvs"
+				],
 				"[python]": {
 					"editor.defaultFormatter": "ms-python.black-formatter",
 					"editor.formatOnSave": true
@@ -49,6 +57,7 @@
 				"wholroyd.jinja",
 				"Zignd.html-css-class-completion",
 				"redhat.vscode-yaml",
+                "redhat.vscode-openshift-connector",
 				"ms-azuretools.vscode-docker",
 				"ms-kubernetes-tools.vscode-kubernetes-tools",
 				"inercia.vscode-k3d",
