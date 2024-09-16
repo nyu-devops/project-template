@@ -50,13 +50,13 @@ run: ## Run the service
 
 .PHONY: cluster
 cluster: ## Create a K3D Kubernetes cluster with load balancer and registry
-	$(info Creating Kubernetes cluster with a registry and 1 node...)
-	k3d cluster create --agents 1 --registry-create cluster-registry:0.0.0.0:5000 --port '8080:80@loadbalancer'
+	$(info Creating Kubernetes cluster $(CLUSTER) with a registry and 2 worker nodes...)
+	k3d cluster create $(CLUSTER) --agents 2 --registry-create cluster-registry:0.0.0.0:5000 --port '8080:80@loadbalancer'
 
 .PHONY: cluster-rm
 cluster-rm: ## Remove a K3D Kubernetes cluster
-	$(info Removing Kubernetes cluster...)
-	k3d cluster delete
+	$(info Removing Kubernetes cluster $(CLUSTER)...)
+	k3d cluster delete $(CLUSTER)
 
 .PHONY: deploy
 depoy: ## Deploy the service on local Kubernetes
