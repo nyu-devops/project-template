@@ -15,10 +15,10 @@
 ######################################################################
 
 """
-Pet Store Service
+YourResourceModel Service
 
 This service implements a REST API that allows you to Create, Read, Update
-and Delete Pets from the inventory of pets in the PetShop
+and Delete YourResourceModel
 """
 
 from flask import jsonify, request, url_for, abort
@@ -32,7 +32,7 @@ from service.common import status  # HTTP Status Codes
 ######################################################################
 @app.route("/")
 def index():
-    """ Root URL response """
+    """Root URL response"""
     return (
         "Reminder: return some useful information in json format about the service here",
         status.HTTP_200_OK,
