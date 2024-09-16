@@ -20,6 +20,7 @@
 					"editor.defaultFormatter": "ms-python.black-formatter",
 					"editor.formatOnSave": true
 				},
+				"git.mergeEditor": true,
 				"markdown-preview-github-styles.colorTheme": "light",
 				"makefile.extensionOutputFolder": "/tmp",
 				"python.testing.unittestEnabled": false,
@@ -44,8 +45,9 @@
 				"alexkrechik.cucumberautocomplete",
 				"ms-vscode.makefile-tools",
 				"yzhang.markdown-all-in-one",
+				"DavidAnson.vscode-markdownlint",
+				"bierner.github-markdown-preview",
 				"hnw.vscode-auto-open-markdown-preview",
-				"davidanson.vscode-markdownlint",
 				"bierner.markdown-preview-github-styles",
 				"tamasfe.even-better-toml",
 				"donjayamanne.githistory",
@@ -70,7 +72,7 @@
 	"postCreateCommand": "bash /app/.devcontainer/scripts/post-install.sh",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": 8080,
+	"forwardPorts": [8080],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {

@@ -4,10 +4,10 @@
 # after the comtainer has been created.
 #
 echo "**********************************************************************"
-echo "Setting up Docker lab environment..."
+echo "Setting up Docker user development environment..."
 echo "**********************************************************************"
 
-echo Setting up registry.local...
+echo "Setting up registry.local..."
 sudo bash -c "echo '127.0.0.1    cluster-registry' >> /etc/hosts"
 
 echo "Making git stop complaining about unsafe folders"
