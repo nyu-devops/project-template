@@ -14,7 +14,8 @@
 					"pytest",
 					"tekton",
 					"creds",
-					"virtualenvs"
+					"virtualenvs",
+					"shopcarts"
 				],
 				"[python]": {
 					"editor.defaultFormatter": "ms-python.black-formatter",
