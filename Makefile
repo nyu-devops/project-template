@@ -1,4 +1,9 @@
 # These can be overidden with env vars.
+REGISTRY ?= cluster-registry:5000
+IMAGE_NAME ?= petshop
+IMAGE_TAG ?= 1.0
+IMAGE ?= $(REGISTRY)/$(IMAGE_NAME):$(IMAGE_TAG)
+PLATFORM ?= "linux/amd64,linux/arm64"
 CLUSTER ?= nyu-devops
 
 .SILENT:
@@ -13,21 +18,16 @@ all: help
 ##@ Development
 
 .PHONY: clean
-clean:	## Removes all dangling docker images
-	$(info Removing all dangling docker images..)
+clean:	## Removes all dangling build cache
+	$(info Removing all dangling build cache..)
+	-docker rmi $(IMAGE)
 	docker image prune -f
-
-.PHONY: venv
-venv: ## Create a Python virtual environment
-	$(info Creating Python 3 virtual environment...)
-	poetry config virtualenvs.in-project true
-	poetry shell
+	docker buildx prune -f
 
 .PHONY: install
-install: ## Install dependencies
+install: ## Install Python dependencies
 	$(info Installing dependencies...)
-	sudo poetry config virtualenvs.create false
-	sudo poetry install
+	sudo pipenv install --system --dev
 
 .PHONY: lint
 lint: ## Run the linter
@@ -39,14 +39,19 @@ lint: ## Run the linter
 .PHONY: test
 test: ## Run the unit tests
 	$(info Running tests...)
-	pytest --pspec --cov=service --cov-fail-under=95
-
-##@ Runtime
+	export RETRY_COUNT=1; pytest --pspec --cov=service --cov-fail-under=95 --disable-warnings
 
 .PHONY: run
 run: ## Run the service
 	$(info Starting service...)
 	honcho start
+
+.PHONY: secret
+secret: ## Generate a secret hex key
+	$(info Generating a new secret key...)
+	python3 -c 'import secrets; print(secrets.token_hex())'
+
+##@ Kubernetes
 
 .PHONY: cluster
 cluster: ## Create a K3D Kubernetes cluster with load balancer and registry
@@ -55,10 +60,44 @@ cluster: ## Create a K3D Kubernetes cluster with load balancer and registry
 
 .PHONY: cluster-rm
 cluster-rm: ## Remove a K3D Kubernetes cluster
-	$(info Removing Kubernetes cluster $(CLUSTER)...)
-	k3d cluster delete $(CLUSTER)
+	$(info Removing Kubernetes cluster...)
+	k3d cluster delete nyu-devops
 
 .PHONY: deploy
-depoy: ## Deploy the service on local Kubernetes
+deploy: ## Deploy the service on local Kubernetes
 	$(info Deploying service locally...)
 	kubectl apply -f k8s/
+
+############################################################
+# COMMANDS FOR BUILDING THE IMAGE
+############################################################
+
+##@ Image Build and Push
+
+.PHONY: init
+init: export DOCKER_BUILDKIT=1
+init:	## Creates the buildx instance
+	$(info Initializing Builder...)
+	-docker buildx create --use --name=qemu
+	docker buildx inspect --bootstrap
+
+.PHONY: build
+build:	## Build the project container image for local platform
+	$(info Building $(IMAGE)...)
+	docker build --rm --pull --tag $(IMAGE) .
+
+.PHONY: push
+push:	## Push the image to the container registry
+	$(info Pushing $(IMAGE)...)
+	docker push $(IMAGE)
+
+.PHONY: buildx
+buildx:	## Build multi-platform image with buildx
+	$(info Building multi-platform image $(IMAGE) for $(PLATFORM)...)
+	docker buildx build --file Dockerfile --pull --platform=$(PLATFORM) --tag $(IMAGE) --push .
+
+.PHONY: remove
+remove:	## Stop and remove the buildx builder
+	$(info Stopping and removing the builder image...)
+	docker buildx stop
+	docker buildx rm

@@ -24,7 +24,7 @@ sudo sh -c 'echo "127.0.0.1 cluster-registry" >> /etc/hosts'
 echo "**********************************************************************"
 echo "Installing K9s..."
 echo "**********************************************************************"
-curl -L -o k9s.tar.gz "https://github.com/derailed/k9s/releases/download/v0.32.5/k9s_Linux_$ARCH.tar.gz"
+curl -L -o k9s.tar.gz "https://github.com/derailed/k9s/releases/download/v0.32.7/k9s_Linux_$ARCH.tar.gz"
 tar xvzf k9s.tar.gz
 sudo install -c -m 0755 k9s /usr/local/bin
 rm k9s.tar.gz
@@ -44,7 +44,7 @@ sudo install -c -m 0755 devspace /usr/local/bin
 echo "**********************************************************************"
 echo "Installing Stern..."
 echo "**********************************************************************"
-curl -L -o stern.tar.gz "https://github.com/stern/stern/releases/download/v1.30.0/stern_1.30.0_linux_$ARCH.tar.gz"
+curl -L -o stern.tar.gz "https://github.com/stern/stern/releases/download/v1.32.0/stern_1.32.0_linux_$ARCH.tar.gz"
 tar xvzf stern.tar.gz
 sudo install -c -m 0755 stern /usr/local/bin
 rm stern.tar.gz LICENSE
@@ -52,7 +52,7 @@ rm stern.tar.gz LICENSE
 echo "**********************************************************************"
 echo "Installing Knative CLI..."
 echo "**********************************************************************"
-curl -L -o kn "https://github.com/knative/client/releases/download/knative-v1.15.0/kn-linux-$ARCH"
+curl -L -o kn "https://github.com/knative/client/releases/download/knative-v1.17.0/kn-linux-$ARCH"
 sudo install -c -m 0755 kn /usr/local/bin
 rm kn
 
@@ -60,9 +60,9 @@ echo "**********************************************************************"
 echo "Installing Tekton CLI..."
 echo "**********************************************************************"
 if [ $ARCH == amd64 ]; then
-    curl -L https://github.com/tektoncd/cli/releases/download/v0.38.1/tkn_0.38.1_Linux_x86_64.tar.gz --output tekton.tar.gz
+    curl -L https://github.com/tektoncd/cli/releases/download/v0.39.1/tkn_0.39.1_Linux_x86_64.tar.gz --output tekton.tar.gz
 else
-    curl -L https://github.com/tektoncd/cli/releases/download/v0.38.1/tkn_0.38.1_Linux_aarch64.tar.gz --output tekton.tar.gz
+    curl -L https://github.com/tektoncd/cli/releases/download/v0.39.1/tkn_0.39.1_Linux_aarch64.tar.gz --output tekton.tar.gz
 fi;
 tar xvzf tekton.tar.gz tkn
 sudo install -c -m 0755 tkn /usr/local/bin

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # These must be installed as a user and therefore need to be run
-# after the comtainer has been created.
+# after the container has been created.
 #
 echo "**********************************************************************"
 echo "Setting up Docker user development environment..."

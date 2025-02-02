@@ -12,7 +12,9 @@
 					"sqlalchemy",
 					"psycopg",
 					"pytest",
+					"pipenv",
 					"tekton",
+					"testdb"			
 					"creds",
 					"virtualenvs",
 					"shopcarts"
@@ -24,6 +26,7 @@
 				"git.mergeEditor": true,
 				"markdown-preview-github-styles.colorTheme": "light",
 				"makefile.extensionOutputFolder": "/tmp",
+				"makefile.configureOnOpen": false,
 				"python.testing.unittestEnabled": false,
 				"python.testing.pytestEnabled": true,			
 				"python.testing.pytestArgs": [
@@ -39,11 +42,13 @@
 			},
 			"extensions": [
 				"ms-python.python",
-				"ms-python.pylint",
 				"ms-python.vscode-pylance",
+				"ms-python.pylint",
 				"ms-python.flake8",
 				"ms-python.black-formatter",
 				"alexkrechik.cucumberautocomplete",
+				"njpwerner.autodocstring",
+				"wholroyd.jinja",
 				"ms-vscode.makefile-tools",
 				"yzhang.markdown-all-in-one",
 				"DavidAnson.vscode-markdownlint",
@@ -56,17 +61,14 @@
 				"github.vscode-github-actions",
 				"hbenl.vscode-test-explorer",
 				"LittleFoxTeam.vscode-python-test-adapter",
-				"njpwerner.autodocstring",
-				"wholroyd.jinja",
 				"Zignd.html-css-class-completion",
 				"redhat.vscode-yaml",
-                "redhat.vscode-openshift-connector",
 				"ms-azuretools.vscode-docker",
-				"ms-kubernetes-tools.vscode-kubernetes-tools",
+                "redhat.vscode-openshift-connector",
 				"inercia.vscode-k3d",
-				"rangav.vscode-thunder-client",
-				"bbenoist.vagrant",
-				"streetsidesoftware.code-spell-checker"
+				"ms-kubernetes-tools.vscode-kubernetes-tools",
+				"streetsidesoftware.code-spell-checker",
+				"bbenoist.vagrant"
 			]
 		}
 	},
