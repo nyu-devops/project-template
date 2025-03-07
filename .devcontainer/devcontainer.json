@@ -14,7 +14,7 @@
 					"pytest",
 					"pipenv",
 					"tekton",
-					"testdb"			
+					"testdb",		
 					"creds",
 					"virtualenvs",
 					"shopcarts"
@@ -63,6 +63,7 @@
 				"LittleFoxTeam.vscode-python-test-adapter",
 				"Zignd.html-css-class-completion",
 				"redhat.vscode-yaml",
+				"unjinjang.rest-api-client",
 				"ms-azuretools.vscode-docker",
                 "redhat.vscode-openshift-connector",
 				"inercia.vscode-k3d",
