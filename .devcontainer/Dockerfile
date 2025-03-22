@@ -4,8 +4,8 @@ FROM rofrano/nyu-devops-base:sp25
 # Set up the Python development environment
 WORKDIR /app
 COPY Pipfile Pipfile.lock ./
-RUN python -m pip install --upgrade pip pipenv && \
-    pipenv install --system --dev
+RUN sudo python -m pip install --upgrade pip pipenv && \
+    sudo pipenv install --system --dev
 
 # Install user mode tools
 COPY .devcontainer/scripts/install-tools.sh /tmp/
