@@ -18,7 +18,6 @@ echo "**********************************************************************"
 release=$(curl -s https://dl.k8s.io/release/stable.txt)
 curl -LO "https://dl.k8s.io/release/${release}/bin/linux/${ARCH}/kubectl"
 chmod +x ./kubectl
-# sudo mv ./kubectl /usr/local/bin/kubectl
 sudo install -c -m 0755 kubectl /usr/local/bin
 rm ./kubectl
 echo "Creating kc and kns alias for kubectl..."
