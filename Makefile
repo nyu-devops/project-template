@@ -63,6 +63,11 @@ cluster-rm: ## Remove a K3D Kubernetes cluster
 	$(info Removing Kubernetes cluster...)
 	k3d cluster delete nyu-devops
 
+.PHONY: import
+import: ## Import the image into the local K3D cluster
+	$(info Importing $(IMAGE) into k3d cluster $(CLUSTER)...)
+	k3d image import --cluster $(CLUSTER) $(IMAGE)
+
 .PHONY: deploy
 deploy: ## Deploy the service on local Kubernetes
 	$(info Deploying service locally...)
