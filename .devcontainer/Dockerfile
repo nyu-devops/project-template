@@ -1,5 +1,5 @@
 # Image for a NYU Lab development environment
-FROM quay.io/rofrano/nyu-devops-base:sp26
+FROM quay.io/rofrano/nyu-devops-base:su26
 
 ARG USERNAME=vscode
 USER root
